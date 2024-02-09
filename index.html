@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yes No Buttons</title>
+<style>
+    button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 10px;
+    }
+
+body {
+  text-align: center;
+  }
+  
+#info {
+    margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div id="info">
+  <img id="image" src="https://images.pexels.com/photos/19797253/pexels-photo-19797253/free-photo-of-red-berries-on-a-branch-with-a-drop-of-water.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Placeholder Image">
+  <h1 id="text">HELLO</h1>
+</div>
+
+<button id="yesBtn" style="background-color:green;">YES</button>
+<button id="noBtn" style="background-color:red;">NO</button>
+
+<script>
+    const yesButton = document.getElementById('yesBtn');
+    const noButton = document.getElementById('noBtn');
+    const image = document.getElementById('image');
+    const text = document.getElementById('text');
+    const infoDiv = document.getElementById('info');
+
+  noButton.addEventListener('click', () => {
+    // Increase size of YES button
+    const computedStyle = window.getComputedStyle(yesButton);
+    const currentSize = parseFloat(computedStyle.getPropertyValue('font-size'));
+    yesButton.style.fontSize = (currentSize + 3) + 'px';
+
+    // Change text of NO button
+    const randomTexts = ["NO", "NEVER", "NOT TODAY", "DEFINITELY NOT"];
+    const randomIndex = Math.floor(Math.random() * randomTexts.length);
+    noButton.textContent = randomTexts[randomIndex];
+  });
+
+  yesButton.addEventListener('click', () => {
+    // Remove everything except image and text "YAY"
+    infoDiv.innerHTML = '<img id="image" src="https://via.placeholder.com/200" alt="Placeholder Image">' +
+                        '<h1 id="text">YAY</h1>';
+yesButton.style.display = "none";
+noButton.style.display = "none";
+  });
+</script>
+
+</body>
+</html>
